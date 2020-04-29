@@ -1,0 +1,37 @@
+<div class="user">
+  <mat-form-field class="search-input" fxLayout="column center">
+    <mat-label>Buscar Usuario por Id</mat-label>
+    <input matInput type="number" name="DniUser" [(ngModel)]="dni" (change)="searchUserByDni()" >
+    <mat-icon matSuffix color="primary">search</mat-icon>
+  </mat-form-field>
+  <mat-divider></mat-divider>
+  <h1 class="title">Información del usuario</h1>
+  <div fxLayout="row" fxLayout.xs="column" fxLayoutAlign="center"
+       class="mat-app-background basic-container">
+    <div fxLayout="column" fxLayoutAlign.xs="center center">
+      <h1 class="subtitle">
+        Datos de usuario
+      </h1>
+      <div class="tab-info" fxLayout="column">
+      <mat-form-field appearance="fill">
+        <mat-label>Cedula</mat-label>
+        <input matInput disabled [value]="user.Dni">
+      </mat-form-field>
+      <mat-form-field appearance="fill">
+        <mat-label>Nombre</mat-label>
+        <input matInput disabled [value]="user.Name | uppercase ">
+      </mat-form-field>
+      <mat-form-field appearance="fill">
+        <mat-label>Apellido</mat-label>
+        <input matInput disabled [value]="user.LastName | uppercase ">
+      </mat-form-field>
+      </div>
+    </div>
+    <div class="tab-info" fxLayout="column" fxLayoutAlign.xs="center center">
+      <h1 class="subtitle">
+        Cantidad de peliculas
+      </h1>
+      <h1 class="number-movies">{{user.QuantityMovies}}</h1>
+    </div>
+  </div>
+</div>

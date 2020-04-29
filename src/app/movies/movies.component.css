@@ -1,0 +1,43 @@
+.card {
+  width: 237px;
+  margin: 4px 4px;
+  padding: 0px;
+  height: 355.500px;
+  background-color: #212121;
+  text-align: center;
+}
+
+::ng-deep .mat-card:hover {
+  /*padding: 0 !important;*/
+}
+::ng-deep .mat-card:hover img {
+  filter: brightness(15%);
+}
+.card-movie:hover  ::ng-deep .mat-card-header, ::ng-deep .card-movie:hover  ::ng-deep .mat-card-content  {
+  visibility: visible;
+}
+
+.header-card, .content-movie {
+  visibility: hidden;
+}
+
+::ng-deep .mat-card-title {
+  margin-top: 20px;
+  text-align: center;
+}
+
+.information {
+  z-index: 1;
+  position: absolute;
+  color: white;
+  text-align: justify;
+  padding: 0px 20px;
+}
+
+::ng-deep .mat-card-header-text {
+  width: 100%;
+}
+
+.add-description {
+  padding: 0px 30px;
+}

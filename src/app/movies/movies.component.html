@@ -1,0 +1,44 @@
+<div style="padding-top: 70px;">
+  <mat-form-field fxLayout="column center" style="padding: 15px 10%;">
+    <mat-label>Buscar pelicula por Id</mat-label>
+    <input matInput [(ngModel)]="dni" (change)="findMovieById()" name="idMovie">
+    <mat-icon matSuffix color="primary">search</mat-icon>
+  </mat-form-field>
+  <mat-divider></mat-divider>
+  <h1 style="padding-top: 20px; padding-left: 20px">Todas las peliculas</h1>
+  <div fxLayout="row wrap" fxLayout.xs="column" fxLayoutAlign="center center"
+       class="mat-app-background basic-container">
+
+    <mat-card class="card card-movie" *ngFor="let movie of tarjetas">
+      <div class="information">
+        <mat-card-header class="header-card">
+          <mat-card-title>{{movie.Title}}</mat-card-title>
+          <mat-card-subtitle>Duración: {{movie.Duration}}</mat-card-subtitle>
+        </mat-card-header>
+        <mat-card-content class="content-movie">
+          <p>
+            {{movie.Synopsis}}
+          </p>
+        </mat-card-content>
+      </div>
+      <img mat-card-image [src]="movie.UrlImg" style="border-radius: 4px; width: 100%; margin: 0px">
+    </mat-card>
+
+    <mat-card class="card" fxLayout="column" fxLayoutAlign="center center">
+      <mat-card-header>
+        <mat-card-title>Add Movie</mat-card-title>
+      </mat-card-header>
+      <mat-card-actions>
+        <button mat-icon-button style="width: 150px; height: 150px;" (click)="openDialog()">
+          <mat-icon color="primary" style="font-size: 150px;width: 100%;text-align: center;">add_circle</mat-icon>
+        </button>
+      </mat-card-actions>
+      <mat-card-content class="add-description">
+        <p>
+          Agregar pelicula vista por uno de los usuarios de la plataforma
+        </p>
+      </mat-card-content>
+
+    </mat-card>
+  </div>
+</div>

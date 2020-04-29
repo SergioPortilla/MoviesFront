@@ -1,0 +1,50 @@
+  <mat-sidenav-container fxFlexFill >
+
+    <mat-sidenav #sidenav  class="snidenav"  fullscreen fxHide.gt-sm>
+      <mat-tree [dataSource]="dataSource" [treeControl]="treeControl">
+        <mat-tree-node *matTreeNodeDef="let node" matTreeNodePadding class="node">
+          <a routerLink="{{node.route}}" class="node-info"> {{node.name}}</a>
+        </mat-tree-node>
+        <mat-tree-node *matTreeNodeDef="let node;when: hasChild" matTreeNodePadding class="principal-node"  fxLayout="row">
+          <button mat-icon-button matTreeNodeToggle
+                  [attr.aria-label]="'toggle ' + node.name">
+            <mat-icon class="mat-icon-rtl-mirror">
+              {{treeControl.isExpanded(node) ? 'expand_more' : 'chevron_right'}}
+            </mat-icon>
+          </button>
+          <a class="bar-responsive" fxLayout="row">
+            <div>{{node.name}}</div>
+            <mat-icon>{{node.icon}}</mat-icon>
+          </a>
+        </mat-tree-node>
+      </mat-tree>
+    </mat-sidenav>
+
+    <mat-sidenav-content fxFlexFill >
+
+      <mat-toolbar color="primary" style="position: fixed;z-index: 5;">
+        <mat-toolbar-row class="menu-bar">
+          <div class="icon-menu" fxShow="true" fxHide.gt-sm>
+            <button mat-icon-button (click)="sidenav.toggle()" style="width: 50px; height: 50px;">
+
+              <mat-icon style="font-size: 45px; display: inline;">menu</mat-icon>
+            </button>
+          </div>
+
+          <div class="title-app">Movies</div>
+
+          <a class="bar" [matMenuTriggerFor]="menu" *ngFor="let option of accesOptions" fxShow="true" fxLayout="row"
+             fxHide.lt-md >
+            <mat-icon>{{option.icon}}</mat-icon>
+            <div class="option-val">{{option.name}}</div>
+            <mat-menu #menu="matMenu">
+              <button routerLink="{{info.route}}"  mat-menu-item *ngFor="let info of option.item" >{{info.name}}</button>
+            </mat-menu>
+          </a>
+
+        </mat-toolbar-row>
+      </mat-toolbar>
+      <ng-content select="app-content"></ng-content>
+    </mat-sidenav-content>
+  </mat-sidenav-container>
+

@@ -1,0 +1,54 @@
+<form class="example-form"  mat-dialog-content>
+  <div style="display: flex; justify-content: space-between">
+    <h1 mat-dialog-title>Agregar una nueva pelicula</h1>
+    <button mat-icon-button (click)="close()" cdkFocusInitial>
+      <mat-icon>close</mat-icon>
+    </button>
+  </div>
+
+  <div fxLayout="row" fxLayout.xs="column">
+    <div fxHide.lt-md  style="background-color: #212121; width: 237px; margin: 1px 1px; height: 355.500px;">
+      <img mat-card-image [src]="movieAdd?.Movie.UrlImg" style="border-radius: 4px; width: 100%; margin: 0px">
+    </div>
+    <div fxLayout="column wrap" style="padding-left: 25px;" >
+
+      <mat-form-field appearance="fill">
+        <mat-label>Titulo de la pelicula</mat-label>
+        <input matInput [(ngModel)]="movieAdd?.Movie.Title" name="titulo">
+      </mat-form-field>
+      <p>Duración (HH : MM)</p>
+      <div fxLayout="row" style="align-items: center;">
+        <mat-form-field appearance="outline" style="width: 60px">
+          <mat-select [(ngModel)]="hour" name="horas" (selectionChange)="setDurationMovie()" >
+            <mat-option *ngFor="let i of arrayOne(24); let hour = index;" [value]="hour">{{hour}}</mat-option>
+          </mat-select>
+        </mat-form-field>
+        <div style="padding: 0px 10px"><h1>:</h1></div>
+        <mat-form-field appearance="outline" style="width: 60px">
+          <mat-select  [(ngModel)]="minute" name="minutos" (selectionChange)="setDurationMovie()">
+            <mat-option *ngFor="let i of arrayOne(59); let minute = index;" [value]="minute">{{minute}}</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+      <mat-form-field appearance="fill">
+        <mat-label>Url de la imagen</mat-label>
+        <input matInput [(ngModel)]="movieAdd?.Movie.UrlImg" name="url">
+      </mat-form-field>
+      <mat-divider style="padding-bottom: 10px"></mat-divider>
+      <p>Cedula del quien agrego la pelicula</p>
+      <mat-form-field appearance="fill">
+        <mat-label>Cedula</mat-label>
+        <input matInput type="number" [(ngModel)]="movieAdd.Dni" name="dni">
+      </mat-form-field>
+    </div>
+    <div fxLayout="column wrap" style="padding-left: 25px; justify-content: space-between;">
+      <mat-form-field appearance="fill">
+        <mat-label>Textarea</mat-label>
+        <textarea matInput [(ngModel)]="movieAdd?.Movie.Synopsis" name="synopsis" style="max-height: 250px; height: 150px"></textarea>
+      </mat-form-field>
+      <button mat-raised-button color="primary" type="button"  style="margin-bottom: 20px;" (click)="createMovie()">Guardar</button>
+    </div>
+
+  </div>
+
+</form>
